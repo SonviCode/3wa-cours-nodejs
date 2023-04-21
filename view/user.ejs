@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Accueil</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/user">User</a>
+        </li>
+      </ul>
+    </nav>
+    <p class="text-user">Voici les derniers utilisateurs :</p>
+
+    <ul>
+      <% for(let i = 0; i < students.length; i++) { %> <% const student =
+      students[i] %>
+      <li class="card-container">
+        <form action="/deleteUser" method="post" class="card">
+          <h3><%= student.name %></h3>
+          <div class="date-input">
+            <p><%= handleDate(student.birth) %></p>
+            <input type="hidden" name="name" value=<%= student.name %>/>
+            <input type="hidden" name="birth" value=<%= student.birth %>/>
+            <button>X</button>
+          </div>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
